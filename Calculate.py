@@ -1,9 +1,18 @@
+"""Module providing a function to calculate hours between 2 dates."""
+
 from datetime import datetime
 
-class BadDateOrder(Exception):
-  pass
 
-print("""Insert date & time (24 hour format) using the following format:
+class BadDateOrder(Exception):
+    """Exception for bad date order input
+
+    Args:
+      Exception (str): First date greater than the second
+    """
+
+
+print(
+    """Insert date & time (24 hour format) using the following format:
       
 month/day/year hour:minute
 00/00/0000 00:00
@@ -11,44 +20,50 @@ month/day/year hour:minute
 Example: 07/10/2024 23:59
 
 *Second date must be greater than the first date*
-""")
+"""
+)
 
-def calDate(date1, date2):
 
-  diference = date2 - date1
-  result = {
-    "hours": (diference.days * 24) + (int(diference.seconds / 3600)),
-    "minutes": (diference.seconds / 60) - ((int(diference.seconds / 3600)) * 60 )
-  }
+def calculate_date(date1, date2):
+    """Function to calculate the hours"""
 
-  print('%d hour/s and %d minute/s' % (result["hours"], result["minutes"]))
-  
-  while True:
-    cont = input("Quit? (y/n): ")
-    if (cont == 'y' or cont == 'Y'):
-      quit()
-    elif (cont == 'n' or cont == 'N'):
-      init()
-      break
+    diference = date2 - date1
+    result = {
+        "hours": (diference.days * 24) + (int(diference.seconds / 3600)),
+        "minutes": (diference.seconds / 60) - ((int(diference.seconds / 3600)) * 60),
+    }
+
+    print(f"{result['hours']} hour/s and {int(result['minutes'])} minute/s")
+
+    while True:
+        cont = input("Quit? (y/n): ")
+        if cont in {"y", "Y", "yes", "Yes"}:
+            quit()
+        elif cont in {"n", "N", "no", "No"}:
+            init()
+            break
+
 
 def init():
-  while True:
-    try:
-      d1 = input('Insert first date: ')
-      d2 = input('Insert second date: ')
-          
-      date1 = datetime.strptime(d1,'%m/%d/%Y %H:%M')
-      date2 = datetime.strptime(d2,'%m/%d/%Y %H:%M')
-          
-      if ((date2.timestamp() - date1.timestamp()) < 0):
-        raise BadDateOrder('First date greater than the second')
-      else:
-        calDate(date1, date2)
-        break
-    except BadDateOrder as err:
-      print(f">>> Error: {err}")
-    except ValueError:
-      print(">>> Error: Wrong format")
+    """The initial function"""
+
+    while True:
+        try:
+            d1 = input("Insert first date: ")
+            d2 = input("Insert second date: ")
+
+            date1 = datetime.strptime(d1, "%m/%d/%Y %H:%M")
+            date2 = datetime.strptime(d2, "%m/%d/%Y %H:%M")
+
+            if (date2.timestamp() - date1.timestamp()) < 0:
+                raise BadDateOrder("First date greater than the second")
+            else:
+                calculate_date(date1, date2)
+                break
+        except BadDateOrder as err:
+            print(f">>> Error: {err}")
+        except ValueError:
+            print(">>> Error: Wrong format")
+
 
 init()
-    
