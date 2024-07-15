@@ -9,7 +9,7 @@ hour:minute:second
 
 If you want to add or substract, put + or - symbol at the beginning.
 
-Example: +12:10:00 or -7:7:7
+Example: +12:10:00 or -0:10:0
 """
 )
 
