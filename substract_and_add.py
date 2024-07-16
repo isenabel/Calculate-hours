@@ -82,6 +82,8 @@ def init():
             elif time_input == "reset" or time_input == "Reset":
                 time = timedelta()
                 print(time)
+            else:
+                print("No symbol or wrong command")
 
         except ValueError:
             print("Error: Wrong format or value error")
