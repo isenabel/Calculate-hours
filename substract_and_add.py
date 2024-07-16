@@ -17,6 +17,8 @@ Examples:
 +1 (Add 1 hour)
 -0.10 (Substract 10 minutes) or -00.10.00
 -0.0.10 (Substract 10 seconds)
+
+Type "reset" to restart.
 """
 )
 
@@ -75,8 +77,11 @@ def init():
                 final_time -= time
                 print(final_time)
 
-            elif time_input == "quit":
+            elif time_input == "quit" or time_input == "Quit":
                 quit()
+            elif time_input == "reset" or time_input == "Reset":
+                time = timedelta()
+                print(time)
 
         except ValueError:
             print("Error: Wrong format or value error")
