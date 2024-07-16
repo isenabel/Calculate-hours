@@ -22,6 +22,37 @@ Type "reset" to restart.
 """
 )
 
+def create_timedelta(hour_input: str) -> timedelta | None:
+    """Create and return a timedelta object
+
+    Args:
+        input (str): _description_
+
+    Returns:
+        timedelta | None: _description_
+    """
+    aux = hour_input[1:]
+    splited_time = aux.split(".")
+
+    while '' in splited_time:
+        splited_time.remove('')
+
+    time_list_len = len(splited_time)
+    if time_list_len == 3:
+        return timedelta(
+            hours=int(splited_time[0]),
+            minutes=int(splited_time[1]),
+            seconds=int(splited_time[2])
+        )
+    elif time_list_len == 2:
+        return timedelta(
+            hours=int(splited_time[0]),
+            minutes=int(splited_time[1])
+        )
+    elif time_list_len == 1:
+        return timedelta(
+            hours=int(splited_time[0])
+        )
 
 def init():
     """The initial function"""
@@ -34,54 +65,22 @@ def init():
             )
             print("")
             if time_input[0] == "+":
-                aux = time_input[1:]
-                splited_time = aux.split(".")
-                time_list_len = len(splited_time)
-                if time_list_len == 3:
-                    time = timedelta(
-                        hours=int(splited_time[0]),
-                        minutes=int(splited_time[1]),
-                        seconds=int(splited_time[2])
-                    )
-                elif time_list_len == 2:
-                    time = timedelta(
-                        hours=int(splited_time[0]),
-                        minutes=int(splited_time[1])
-                    )
-                elif time_list_len == 1:
-                    time = timedelta(
-                        hours=int(splited_time[0])
-                    )
+                time = create_timedelta(time_input)
                 final_time += time
                 print(final_time)
 
             elif time_input[0] == "-":
-                aux = time_input[1:]
-                splited_time = aux.split(".")
-                time_list_len = len(splited_time)
-                if time_list_len == 3:
-                    time = timedelta(
-                        hours=int(splited_time[0]),
-                        minutes=int(splited_time[1]),
-                        seconds=int(splited_time[2])
-                    )
-                elif time_list_len == 2:
-                    time = timedelta(
-                        hours=int(splited_time[0]),
-                        minutes=int(splited_time[1])
-                    )
-                elif time_list_len == 1:
-                    time = timedelta(
-                        hours=int(splited_time[0])
-                    )
+                time = create_timedelta(time_input)
                 final_time -= time
                 print(final_time)
 
             elif time_input == "quit" or time_input == "Quit":
                 quit()
+
             elif time_input == "reset" or time_input == "Reset":
                 time = timedelta()
                 print(time)
+
             else:
                 print("No symbol or wrong command")
 
