@@ -4,14 +4,22 @@ from datetime import timedelta
 
 print(
     """Insert time (24 hour format) using the following format:
-hour:minute:second
-00:00:00
+hour.minute.second
+00.00.00
 
 If you want to add or substract, put + or - symbol at the beginning.
 
-Example: +12:10:00 or -0:10:0
+You do not need to insert all 3 values.
+You can insert only one or two values starting with the hours.
+
+Examples: 
++01.00.00 (Add 1 hour)
++1 (Add 1 hour)
+-0.10 (Substract 10 minutes) or -00.10.00
+-0.0.10 (Substract 10 seconds)
 """
 )
+
 
 def init():
     """The initial function"""
@@ -22,26 +30,56 @@ def init():
             time_input = input(
                 'Insert time with the operation number at first (type "quit" to exit): '
             )
-            print('')
+            print("")
             if time_input[0] == "+":
                 aux = time_input[1:]
-                splited_time = aux.split(':')
-                time1 = timedelta(hours=int(splited_time[0]), minutes=int(splited_time[1]), seconds=int(splited_time[2]))
-                final_time += time1
+                splited_time = aux.split(".")
+                time_list_len = len(splited_time)
+                if time_list_len == 3:
+                    time = timedelta(
+                        hours=int(splited_time[0]),
+                        minutes=int(splited_time[1]),
+                        seconds=int(splited_time[2])
+                    )
+                elif time_list_len == 2:
+                    time = timedelta(
+                        hours=int(splited_time[0]),
+                        minutes=int(splited_time[1])
+                    )
+                elif time_list_len == 1:
+                    time = timedelta(
+                        hours=int(splited_time[0])
+                    )
+                final_time += time
                 print(final_time)
 
             elif time_input[0] == "-":
                 aux = time_input[1:]
-                splited_time = aux.split(':')
-                time1 = timedelta(hours=int(splited_time[0]), minutes=int(splited_time[1]), seconds=int(splited_time[2]))
-                final_time -= time1
+                splited_time = aux.split(".")
+                time_list_len = len(splited_time)
+                if time_list_len == 3:
+                    time = timedelta(
+                        hours=int(splited_time[0]),
+                        minutes=int(splited_time[1]),
+                        seconds=int(splited_time[2])
+                    )
+                elif time_list_len == 2:
+                    time = timedelta(
+                        hours=int(splited_time[0]),
+                        minutes=int(splited_time[1])
+                    )
+                elif time_list_len == 1:
+                    time = timedelta(
+                        hours=int(splited_time[0])
+                    )
+                final_time -= time
                 print(final_time)
 
             elif time_input == "quit":
                 quit()
 
         except ValueError:
-            print("Error: Wrong format")
+            print("Error: Wrong format or value error")
 
 
 init()
