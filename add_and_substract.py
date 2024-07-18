@@ -45,15 +45,16 @@ def create_timedelta(hour_input: str) -> timedelta | None:
             minutes=int(splited_time[1]),
             seconds=int(splited_time[2])
         )
-    elif time_list_len == 2:
+    if time_list_len == 2:
         return timedelta(
             hours=int(splited_time[0]),
             minutes=int(splited_time[1])
         )
-    elif time_list_len == 1:
+    if time_list_len == 1:
         return timedelta(
             hours=int(splited_time[0])
         )
+    return None
 
 def init():
     """The initial function"""
@@ -75,10 +76,10 @@ def init():
                 final_time -= time
                 print(final_time)
 
-            elif time_input == "quit" or time_input == "Quit":
+            elif time_input in ("quit", "Quit"):
                 sys.exit(0)
 
-            elif time_input == "reset" or time_input == "Reset":
+            elif time_input in ("reset", "Reset"):
                 time = timedelta()
                 print(time)
 
@@ -87,6 +88,5 @@ def init():
 
         except ValueError:
             print("Error: Wrong format or value error")
-
 
 init()

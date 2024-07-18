@@ -38,15 +38,14 @@ def calculate_date(date1, date2):
 
     while True:
         cont = input("Quit? (y/n): ")
-        if cont in {"y", "Y", "yes", "Yes"}:
+        if cont in ("y", "Y", "yes", "Yes"):
             sys.exit(0)
-        elif cont in {"n", "N", "no", "No"}:
-            init()
+        elif cont in ("n", "N", "no", "No"):
+            main()
             break
 
-
-def init():
-    """The initial function"""
+def main():
+    """The Main function"""
 
     while True:
         try:
@@ -58,12 +57,14 @@ def init():
 
             if (date2.timestamp() - date1.timestamp()) < 0:
                 raise BadDateOrder("First date greater than the second")
-            else:
-                calculate_date(date1, date2)
-                break
-        except BadDateOrder as err:
-            print(f">>> Error: {err}")
-        except ValueError:
-            print(">>> Error: Wrong format")
 
-init()
+            calculate_date(date1, date2)
+            break
+
+        except BadDateOrder as err:
+            print(f"Error: {err}")
+
+        except ValueError:
+            print("Error: Wrong format")
+
+main()
