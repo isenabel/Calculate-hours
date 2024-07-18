@@ -1,5 +1,12 @@
-# Calculate hours between two dates & time
+# Tools made with Python
 
-A tool to calculate the number of hours between 2 dates
+## hours_from_date
+Calculate how many hours there are between two dates.
 
-Requirements: Python
+## add_and_substract
+Accumulate time in a variable.
+
+## random_name_picker
+Randomize the order of inserted values.
+
+Requirements: Python 3+

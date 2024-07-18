@@ -1,6 +1,7 @@
 """Module providing a function to substract or add time"""
 
 from datetime import timedelta
+import sys
 
 print(
     """Insert time (24 hour format) using the following format:
@@ -75,7 +76,7 @@ def init():
                 print(final_time)
 
             elif time_input == "quit" or time_input == "Quit":
-                quit()
+                sys.exit(0)
 
             elif time_input == "reset" or time_input == "Reset":
                 time = timedelta()

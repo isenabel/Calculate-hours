@@ -1,6 +1,7 @@
 """Module providing a function to calculate hours between 2 dates."""
 
 from datetime import datetime
+import sys
 
 
 class BadDateOrder(Exception):
@@ -38,7 +39,7 @@ def calculate_date(date1, date2):
     while True:
         cont = input("Quit? (y/n): ")
         if cont in {"y", "Y", "yes", "Yes"}:
-            quit()
+            sys.exit(0)
         elif cont in {"n", "N", "no", "No"}:
             init()
             break
@@ -64,6 +65,5 @@ def init():
             print(f">>> Error: {err}")
         except ValueError:
             print(">>> Error: Wrong format")
-
 
 init()
