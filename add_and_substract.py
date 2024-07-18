@@ -76,10 +76,10 @@ def init():
                 final_time -= time
                 print(final_time)
 
-            elif time_input in ("quit", "Quit"):
+            elif time_input in {"quit", "Quit"}:
                 sys.exit(0)
 
-            elif time_input in ("reset", "Reset"):
+            elif time_input in {"reset", "Reset"}:
                 time = timedelta()
                 print(time)
 

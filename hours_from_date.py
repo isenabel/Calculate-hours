@@ -38,9 +38,9 @@ def calculate_date(date1, date2):
 
     while True:
         cont = input("Quit? (y/n): ")
-        if cont in ("y", "Y", "yes", "Yes"):
+        if cont in {"y", "Y", "yes", "Yes"}:
             sys.exit(0)
-        elif cont in ("n", "N", "no", "No"):
+        elif cont in {"n", "N", "no", "No"}:
             main()
             break
 

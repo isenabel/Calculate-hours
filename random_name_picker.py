@@ -12,8 +12,8 @@ def main():
     """
 
     values = input("Insert values: ")
-    no_space = values.replace(' ', '')
-    new_list = no_space.split(",")
+    splited = values.split(",")
+    new_list = [value.strip() for value in splited]
     iterations: int = 0
 
     while len(new_list):
@@ -26,8 +26,8 @@ print('-' * 10)
 while True:
     restart = input("Restart? (Yes or No): ")
 
-    if restart in ('Yes', 'yes', 'Y', 'y'):
+    if restart in {'Yes', 'yes', 'Y', 'y'}:
         main()
         break
-    if restart in ('No', 'no', 'N', 'n'):
+    if restart in {'No', 'no', 'N', 'n'}:
         sys.exit(0)
