@@ -1,7 +1,7 @@
 # Tools made with Python
 
 ## hours_from_date
-Calculate how many hours there are between two dates.
+Calculate how many hours are between two dates.
 
 ## add_and_substract
 Accumulate time in a variable.
