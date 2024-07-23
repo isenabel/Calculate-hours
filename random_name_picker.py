@@ -23,21 +23,19 @@ def main():
             while len(new_list):
                 iterations += 1
                 print(f"{iterations}- {new_list.pop(random.randrange(len(new_list)))}")
-
-            print('-' * 20)
             break
 
         if option in {'2', '2)', 'two', 'Two'}:
             while len(new_list):
                 if iterations % 2 == 0:
-                    print(f"{new_list.pop(random.randrange(len(new_list)))}", end=" <==> ")
+                    print(f"{new_list.pop(random.randrange(len(new_list)))}", end=" <--> ")
                 else:
                     print(f"{new_list.pop(random.randrange(len(new_list)))}")
 
                 iterations += 1
-
-            print('-' * 20)
             break
+    print()
+    print('-' * 20)
 
 main()
 
