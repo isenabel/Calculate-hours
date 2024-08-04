@@ -23,6 +23,7 @@ Type "reset" to restart.
 """
 )
 
+
 def create_timedelta(hour_input: str) -> timedelta | None:
     """Create and return a timedelta object
 
@@ -35,26 +36,22 @@ def create_timedelta(hour_input: str) -> timedelta | None:
     aux = hour_input[1:]
     splited_time = aux.split(".")
 
-    while '' in splited_time:
-        splited_time.remove('')
+    while "" in splited_time:
+        splited_time.remove("")
 
     time_list_len = len(splited_time)
     if time_list_len == 3:
         return timedelta(
             hours=int(splited_time[0]),
             minutes=int(splited_time[1]),
-            seconds=int(splited_time[2])
+            seconds=int(splited_time[2]),
         )
     if time_list_len == 2:
-        return timedelta(
-            hours=int(splited_time[0]),
-            minutes=int(splited_time[1])
-        )
+        return timedelta(hours=int(splited_time[0]), minutes=int(splited_time[1]))
     if time_list_len == 1:
-        return timedelta(
-            hours=int(splited_time[0])
-        )
+        return timedelta(hours=int(splited_time[0]))
     return None
+
 
 def init():
     """The initial function"""
@@ -80,13 +77,14 @@ def init():
                 sys.exit(0)
 
             elif time_input in {"reset", "Reset"}:
-                time = timedelta()
-                print(time)
+                final_time = timedelta()
+                print(final_time)
 
             else:
                 print("No symbol or wrong command")
 
         except ValueError:
             print("Error: Wrong format or value error")
+
 
 init()
